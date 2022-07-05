@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class Pexapark_Asset_Management extends Generic {
+public class Pexapark_StepDef extends Generic {
 
     @Given("^the url \"([^\"]*)\"$")
     public void theUrlInBrowser(String url) throws Throwable {

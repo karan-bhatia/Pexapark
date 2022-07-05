@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = {"com.ordermacbook.stepdefinition"},
+        glue = {"com.pexapark.stepdefinition"},
         features = "src/test/resources/features/",
         plugin = {
                 "pretty",
@@ -16,5 +16,5 @@ import org.junit.runner.RunWith;
                 "pretty:target/cucumber-pretty.txt", "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml"
         }
 )
-class TestRunner {
+class RunTest {
 }

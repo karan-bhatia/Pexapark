@@ -14,7 +14,7 @@
         <selenium.version>3.141.0</selenium.version>
         <poi.version>4.1.1</poi.version>
         <maven.compiler.version>3.3</maven.compiler.version>
-        <lombok.version>1.18.16</lombok.version>
+        <lombok.version>1.18.24</lombok.version>
         <maven.build.helper.plugin.version>3.0.0</maven.build.helper.plugin.version>
     </properties>
 
@@ -213,7 +213,7 @@
                 <version>3.0.0-M4</version>
                 <configuration>
                     <includes>
-                        <include>**/TestRunner.java</include>
+                        <include>**/RunTest.java</include>
                     </includes>
                 </configuration>
                 <dependencies>
