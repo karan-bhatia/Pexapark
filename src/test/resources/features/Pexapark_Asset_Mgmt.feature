@@ -11,8 +11,8 @@ Feature: Test Pexapark web application
   Scenario Outline: Add and delete a new asset to the application
     Given Validate you are on Add Asset page
     When Enter the name as "<Asset_Name>" and capacity factor as "<Capacity_Factor>"
-    Then Click on Submit
-    And Validate the asset is added in the table for "<Validation_Message>" and asset name "<Asset_Name>"
+    And Click on Submit
+    Then Validate the asset is added in the table for "<Validation_Message>" and asset name "<Asset_Name>"
     And If "<Validation_Message>" is success then delete the asset with name as "<Asset_Name>"
 
     Examples:
@@ -29,9 +29,9 @@ Feature: Test Pexapark web application
   Scenario Outline: Add, edit and delete a new asset to the application
     Given Validate you are on Add Asset page
     When Enter the name as "<Asset_Name>" and capacity factor as "<Capacity_Factor>"
-    Then Click on Submit
+    And Click on Submit
     And Validate the asset is added in the table for "<Validation_Message_Save>" and asset name "<Asset_Name>"
-    And If "<Validation_Message_Edit>" is success with asset name as "<Asset_Name>" then edit the the asset with name as "<Asset_Name_New>" and capacity factor as "<Capacity_Factor_New>"
+    Then If "<Validation_Message_Edit>" is success with asset name as "<Asset_Name>" then edit the the asset with name as "<Asset_Name_New>" and capacity factor as "<Capacity_Factor_New>"
     And If "<Validation_Message_Edit>" is success then delete the asset with name as "<Asset_Name_New>"
 
     Examples:
