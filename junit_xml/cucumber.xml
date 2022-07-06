@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="2" time="19.419443">
+<testcase classname="Test Pexapark web application" name="Add and delete a new asset to the application" time="9.426283">
+<system-out><![CDATA[Given the url "https://test-monitor-qa.pexapark.com"........................passed
+Then Login to the application with user name "test-user-1" and password "ae8743rzq36cq2x".passed
+Given Validate you are on Add Asset page....................................passed
+When Enter the name as "Test123" and capacity factor as "1212"..............passed
+Then Click on Submit........................................................passed
+And Validate the asset is added in the table for "Success" and asset name "Test123".passed
+And If "Success" is success then delete the asset with name as "Test123"....passed
+]]></system-out>
+</testcase>
+<testcase classname="Test Pexapark web application" name="Add, edit and delete a new asset to the application" time="9.99316">
+<system-out><![CDATA[Given the url "https://test-monitor-qa.pexapark.com"........................passed
+Then Login to the application with user name "test-user-1" and password "ae8743rzq36cq2x".passed
+Given Validate you are on Add Asset page....................................passed
+When Enter the name as "Test123" and capacity factor as "1212"..............passed
+Then Click on Submit........................................................passed
+And Validate the asset is added in the table for "Success" and asset name "Test123".passed
+And If "Success" is success with asset name as "Test123" then edit the the asset with name as "Test1234" and capacity factor as "787898".passed
+And If "Success" is success then delete the asset with name as "Test1234"...passed
+]]></system-out>
+</testcase>
+</testsuite>
