@@ -14,6 +14,7 @@ import java.util.List;
 public class Pexapark_StepDef extends Generic {
 
     static final String assetNameMaxLengthErrorMsg = "Invalid asset name, name cannot exceed 33 characters";
+    static final String assetNameDuplicateErrorMsg = "Already Exist";
 
     @Given("^the url \"([^\"]*)\"$")
     public void theUrlInBrowser(String url) throws Throwable {
@@ -52,13 +53,13 @@ public class Pexapark_StepDef extends Generic {
     public void clickOnSubmit() throws InterruptedException {
         Thread.sleep(3000);
         driver.findElement(By.id("submit")).click();
+        takeScreenShot();
     }
 
     @And("^Validate the asset is added in the table for \"([^\"]*)\" and asset name \"([^\"]*)\"$")
     public void validateTheAssetIsAddedInTheTableForAndAssetName(String message, String assetName) throws Throwable {
         try {
             List<WebElement> tableRows = driver.findElements(By.xpath("//table/tbody[2]/tr"));
-            System.out.println("table rows == " + tableRows.size());
             if (message.equalsIgnoreCase("Success")) {
                 for (WebElement row : tableRows) {
                     while (row.getText().contains(assetName)) {
@@ -74,7 +75,15 @@ public class Pexapark_StepDef extends Generic {
                 WebElement errorMessage = driver.findElement(By.xpath("//p"));
                 highlight(driver, errorMessage);
                 Assert.assertEquals(assetNameMaxLengthErrorMsg, errorMessage.getText());
-                System.out.println("Invalid message is validated");
+                System.out.println("Asset Name is too long.");
+            } else if (message.equalsIgnoreCase("Duplicate_Asset_Name")) {
+                WebElement header1 = driver.findElement(By.xpath("//h1"));
+                highlight(driver, header1);
+                Assert.assertEquals("Ooops!", header1.getText());
+                WebElement errorMessage = driver.findElement(By.xpath("//p"));
+                highlight(driver, errorMessage);
+                Assert.assertEquals(assetNameDuplicateErrorMsg, errorMessage.getText());
+                System.out.println("Asset Name is duplicate.");
             }
 
         } catch (Exception e) {
@@ -86,6 +95,7 @@ public class Pexapark_StepDef extends Generic {
     public void ifIsSuccessThenDeleteTheAssetWithNameAs(String message, String assetName) throws Throwable {
         if (message.equalsIgnoreCase("Success")) {
             driver.findElement(By.id("d-" + assetName)).click();
+            takeScreenShot();
             System.out.println("Asset is deleted");
         }
 
@@ -97,16 +107,18 @@ public class Pexapark_StepDef extends Generic {
         driver.findElement(By.id("name")).sendKeys(newAssetName);
         driver.findElement(By.id("cf")).sendKeys(newCapacityFactor);
         driver.findElement(By.id("submit")).click();
+        Thread.sleep(2000);
         if (message.equalsIgnoreCase("Success")) {
             System.out.println("Asset details are editted");
-        }else if (message.equalsIgnoreCase("Invalid_Asset_Name")) {
+        } else if (message.equalsIgnoreCase("Invalid_Asset_Name")) {
             WebElement header1 = driver.findElement(By.xpath("//h1"));
             highlight(driver, header1);
             Assert.assertEquals("Ooops!", header1.getText());
             WebElement errorMessage = driver.findElement(By.xpath("//p"));
             highlight(driver, errorMessage);
             Assert.assertEquals(assetNameMaxLengthErrorMsg, errorMessage.getText());
-            System.out.println("Invalid message is validated");
+            System.out.println("Asset Name is too long.");
         }
+        takeScreenShot();
     }
 }

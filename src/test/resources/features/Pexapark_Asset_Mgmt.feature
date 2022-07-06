@@ -16,12 +16,14 @@ Feature: Test Pexapark web application
     And If "<Validation_Message>" is success then delete the asset with name as "<Asset_Name>"
 
     Examples:
-      | Asset_Name                         | Capacity_Factor | Validation_Message |
-      | Test123                            | 1212            | Success            |
-      | Asdadasdadasdadasdadadadasdad@!12  | -1212           | Success            |
-      | Abcddasdadasdadasdadadadasdad%$12  | 0               | Success            |
-      | lmnodasdadasdadasdadadadasdad&^12  | 1.345           | Success            |
-      | Asdadasdadasdadasdadadadasdad@!124 | 1212            | Invalid_Asset_Name |
+      | Asset_Name                         | Capacity_Factor | Validation_Message   |
+      | Test123                            | 1212            | Success              |
+      | Asdadasdadasdadasdadadadasdad@!12  | -1212           | Success              |
+      | Abcddasdadasdadasdadadadasdad%$12  | 0               | Success              |
+      | lmnodasdadasdadasdadadadasdad&^12  | 1.345           | Success              |
+      | Asdadasdadasdadasdadadadasdad@!124 | 1212            | Invalid_Asset_Name   |
+      | BBB                                | 1212            | Duplicate_Asset_Name |
+
 
   @Add_Edit_Delete_Asset
   Scenario Outline: Add, edit and delete a new asset to the application
