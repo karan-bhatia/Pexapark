@@ -65,6 +65,14 @@ public class Pexapark_StepDef extends Generic {
                         break;
                     }
                 }
+            } else if (message.equalsIgnoreCase("Invalid_Asset_Name")) {
+                WebElement header1 = driver.findElement(By.xpath("//h1"));
+                highlight(driver, header1);
+                Assert.assertEquals("Ooops!", header1.getText());
+                WebElement errorMessage = driver.findElement(By.xpath("//p"));
+                highlight(driver, errorMessage);
+                Assert.assertEquals("Invalid asset name, name cannot exceed 33 characters", errorMessage.getText());
+                System.out.println("Invalid message is validated");
             }
 
         } catch (Exception e) {
@@ -78,16 +86,25 @@ public class Pexapark_StepDef extends Generic {
             driver.findElement(By.id("d-" + assetName)).click();
             System.out.println("Asset is deleted");
         }
+
     }
 
     @And("^If \"([^\"]*)\" is success with asset name as \"([^\"]*)\" then edit the the asset with name as \"([^\"]*)\" and capacity factor as \"([^\"]*)\"$")
     public void ifIsSuccessWithAssetNameAsThenEditTheTheAssetWithNameAsAndCapacityFactorAs(String message, String assetName, String newAssetName, String newCapacityFactor) throws Throwable {
+        driver.findElement(By.id("e-" + assetName)).click();
+        driver.findElement(By.id("name")).sendKeys(newAssetName);
+        driver.findElement(By.id("cf")).sendKeys(newCapacityFactor);
+        driver.findElement(By.id("submit")).click();
         if (message.equalsIgnoreCase("Success")) {
-            driver.findElement(By.id("e-" + assetName)).click();
-            driver.findElement(By.id("name")).sendKeys(newAssetName);
-            driver.findElement(By.id("cf")).sendKeys(newCapacityFactor);
-            driver.findElement(By.id("submit")).click();
             System.out.println("Asset details are editted");
+        }else if (message.equalsIgnoreCase("Invalid_Asset_Name")) {
+            WebElement header1 = driver.findElement(By.xpath("//h1"));
+            highlight(driver, header1);
+            Assert.assertEquals("Ooops!", header1.getText());
+            WebElement errorMessage = driver.findElement(By.xpath("//p"));
+            highlight(driver, errorMessage);
+            Assert.assertEquals("Invalid asset name, name cannot exceed 33 characters", errorMessage.getText());
+            System.out.println("Invalid message is validated");
         }
     }
 }

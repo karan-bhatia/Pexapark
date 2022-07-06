@@ -4,9 +4,7 @@ import cucumber.api.Scenario;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -88,6 +86,16 @@ public class Generic {
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
+        }
+    }
+
+    public static void highlight(WebDriver driver, WebElement element) {
+        try {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].style.border='4px groove green'", element);
+            js.executeScript("arguments[0].style.border=''", element);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

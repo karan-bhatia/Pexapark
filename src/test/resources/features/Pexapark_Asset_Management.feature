@@ -16,18 +16,23 @@ Feature: Test Pexapark web application
     And If "<Validation_Message>" is success then delete the asset with name as "<Asset_Name>"
 
     Examples:
-      | Asset_Name | Capacity_Factor | Validation_Message |
-      | Test123    | 1212            | Success            |
+      | Asset_Name                         | Capacity_Factor | Validation_Message |
+      | Test123                            | 1212            | Success            |
+      | Asdadasdadasdadasdadadadasdad@!12  | -1212           | Success            |
+      | Abcddasdadasdadasdadadadasdad%$12  | 0               | Success            |
+      | lmnodasdadasdadasdadadadasdad&^12  | 1.345           | Success            |
+      | Asdadasdadasdadasdadadadasdad@!124 | 1212            | Invalid_Asset_Name |
 
   @Add_Edit_Delete_Asset
   Scenario Outline: Add, edit and delete a new asset to the application
     Given Validate you are on Add Asset page
     When Enter the name as "<Asset_Name>" and capacity factor as "<Capacity_Factor>"
     Then Click on Submit
-    And Validate the asset is added in the table for "<Validation_Message>" and asset name "<Asset_Name>"
-    And If "<Validation_Message>" is success with asset name as "<Asset_Name>" then edit the the asset with name as "<Asset_Name_New>" and capacity factor as "<Capacity_Factor_New>"
-    And If "<Validation_Message>" is success then delete the asset with name as "<Asset_Name_New>"
+    And Validate the asset is added in the table for "<Validation_Message_Save>" and asset name "<Asset_Name>"
+    And If "<Validation_Message_Edit>" is success with asset name as "<Asset_Name>" then edit the the asset with name as "<Asset_Name_New>" and capacity factor as "<Capacity_Factor_New>"
+    And If "<Validation_Message_Edit>" is success then delete the asset with name as "<Asset_Name_New>"
 
     Examples:
-      | Asset_Name | Capacity_Factor | Validation_Message |Asset_Name_New|Capacity_Factor_New|
-      | Test123    | 1212            | Success            |Test1234      |787898             |
+      | Asset_Name                        | Capacity_Factor | Validation_Message_Save | Asset_Name_New                     | Capacity_Factor_New | Validation_Message_Edit |
+      | Test123                           | 1212            | Success                 | Test1234                           | 787898              | Success                 |
+      | Asdadasdadasdadasdadadadasdad@!12 | 1212            | Success                 | Asdadasdadasdadasdadadadasdad@!124 | 1212121             | Invalid_Asset_Name      |
