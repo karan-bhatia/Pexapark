@@ -13,6 +13,8 @@ import java.util.List;
 
 public class Pexapark_StepDef extends Generic {
 
+    static final String assetNameMaxLengthErrorMsg = "Invalid asset name, name cannot exceed 33 characters";
+
     @Given("^the url \"([^\"]*)\"$")
     public void theUrlInBrowser(String url) throws Throwable {
         this.setUrl(url); //Setting the URL in a parameter
@@ -71,7 +73,7 @@ public class Pexapark_StepDef extends Generic {
                 Assert.assertEquals("Ooops!", header1.getText());
                 WebElement errorMessage = driver.findElement(By.xpath("//p"));
                 highlight(driver, errorMessage);
-                Assert.assertEquals("Invalid asset name, name cannot exceed 33 characters", errorMessage.getText());
+                Assert.assertEquals(assetNameMaxLengthErrorMsg, errorMessage.getText());
                 System.out.println("Invalid message is validated");
             }
 
@@ -103,7 +105,7 @@ public class Pexapark_StepDef extends Generic {
             Assert.assertEquals("Ooops!", header1.getText());
             WebElement errorMessage = driver.findElement(By.xpath("//p"));
             highlight(driver, errorMessage);
-            Assert.assertEquals("Invalid asset name, name cannot exceed 33 characters", errorMessage.getText());
+            Assert.assertEquals(assetNameMaxLengthErrorMsg, errorMessage.getText());
             System.out.println("Invalid message is validated");
         }
     }
