@@ -48,7 +48,7 @@ A report is created after all the test cases are executed
   * If the asset is added successfully, then the user deletes the asset. The asset added and edited is now deleted.
   * The entire scenario is tested with multiple data sets.
     * Valid asset name and valid capacity factor
-    * Asset name as 33 characters with special characters is added. The added asset is now edited with 34 characters asset name. This should throw and error as 34 characters is not accepted.
+    * **Negative scenario** - Asset name as 33 characters with special characters is added. The added asset is now edited with 34 characters asset name. This should throw and error as 34 characters is not accepted.
 
 
 ### Prerequisites
