@@ -1,6 +1,10 @@
 # Pexapark
 Tests to add, edit and delete asset in asset management application
 
+## Requirement:
+
+Functionality: * only authorised users can access assets and management operations * create asset - name must be between 5 and 30 chars long & have positiv, non-zero, capacity factor * edit asset - make changes to name and/or capaticy factor (as above) * delete asset * list all assets
+
 ##Approach to Testing
  ###Exploratory Testing
 * Check all the tabs. Home page is displayed on clicking on Home, Asset and Logout.
